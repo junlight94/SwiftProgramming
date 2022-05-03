@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		087AAD892821440B006E7891 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AAD882821440B006E7891 /* main.swift */; };
 		93651EF527EF67F70076C7F8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93651EF427EF67F70076C7F8 /* main.swift */; };
 		93651F0227EF68190076C7F8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93651F0127EF68190076C7F8 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		087AAD842821440B006E7891 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		93651EEF27EF67F70076C7F8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		087AAD862821440B006E7891 /* varlet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = varlet; sourceTree = BUILT_PRODUCTS_DIR; };
+		087AAD882821440B006E7891 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		93651EF127EF67F70076C7F8 /* SwiftProgramming */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftProgramming; sourceTree = BUILT_PRODUCTS_DIR; };
 		93651EF427EF67F70076C7F8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		93651EFF27EF68190076C7F8 /* print */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = print; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +52,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		087AAD832821440B006E7891 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93651EEE27EF67F70076C7F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,11 +76,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		087AAD872821440B006E7891 /* varlet */ = {
+			isa = PBXGroup;
+			children = (
+				087AAD882821440B006E7891 /* main.swift */,
+			);
+			path = varlet;
+			sourceTree = "<group>";
+		};
 		93651EE827EF67F70076C7F8 = {
 			isa = PBXGroup;
 			children = (
-				93651EF327EF67F70076C7F8 /* SwiftProgramming */,
 				93651F0027EF68190076C7F8 /* print */,
+				93651EF327EF67F70076C7F8 /* SwiftProgramming */,
+				087AAD872821440B006E7891 /* varlet */,
 				93651EF227EF67F70076C7F8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +99,7 @@
 			children = (
 				93651EF127EF67F70076C7F8 /* SwiftProgramming */,
 				93651EFF27EF68190076C7F8 /* print */,
+				087AAD862821440B006E7891 /* varlet */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +123,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		087AAD852821440B006E7891 /* varlet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 087AAD8A2821440B006E7891 /* Build configuration list for PBXNativeTarget "varlet" */;
+			buildPhases = (
+				087AAD822821440B006E7891 /* Sources */,
+				087AAD832821440B006E7891 /* Frameworks */,
+				087AAD842821440B006E7891 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = varlet;
+			productName = varlet;
+			productReference = 087AAD862821440B006E7891 /* varlet */;
+			productType = "com.apple.product-type.tool";
+		};
 		93651EF027EF67F70076C7F8 /* SwiftProgramming */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93651EF827EF67F70076C7F8 /* Build configuration list for PBXNativeTarget "SwiftProgramming" */;
@@ -135,9 +181,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					087AAD852821440B006E7891 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					93651EF027EF67F70076C7F8 = {
 						CreatedOnToolsVersion = 13.3;
 					};
@@ -161,11 +210,20 @@
 			targets = (
 				93651EF027EF67F70076C7F8 /* SwiftProgramming */,
 				93651EFE27EF68190076C7F8 /* print */,
+				087AAD852821440B006E7891 /* varlet */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		087AAD822821440B006E7891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				087AAD892821440B006E7891 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93651EED27EF67F70076C7F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,6 +243,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		087AAD8B2821440B006E7891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4V6WYCP8W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		087AAD8C2821440B006E7891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W4V6WYCP8W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		93651EF627EF67F70076C7F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,6 +431,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		087AAD8A2821440B006E7891 /* Build configuration list for PBXNativeTarget "varlet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				087AAD8B2821440B006E7891 /* Debug */,
+				087AAD8C2821440B006E7891 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93651EEC27EF67F70076C7F8 /* Build configuration list for PBXProject "SwiftProgramming" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
