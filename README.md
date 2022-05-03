@@ -6,3 +6,5 @@
 
 ### 기본
 * [변수와 상수](https://github.com/junlight94/SwiftProgramming/blob/main/varlet/main.swift)
+* [데이터 타입 기본](https://github.com/junlight94/SwiftProgramming/blob/main/varlet/main.swift)
+* [데이터 타입 고급](https://github.com/junlight94/SwiftProgramming/blob/main/varlet/main.swift)
