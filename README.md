@@ -4,5 +4,5 @@
 
 ## Contents
 
-### var, let(변수와 상수)
+### 기본
 * [변수와 상수](/Sorting/selection_sort.py)
