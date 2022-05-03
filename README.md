@@ -5,4 +5,4 @@
 ## Contents
 
 ### 기본
-* [변수와 상수](/Sorting/selection_sort.py)
+* [변수와 상수](https://github.com/junlight94/SwiftProgramming/blob/main/varlet/main.swift)
