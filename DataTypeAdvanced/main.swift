@@ -151,3 +151,42 @@ print("차집합 : ",num1.subtracting(num2).sorted())
 // 2. 정해진 값 외에는 입력받고 싶지 않을 때
 // 3. 예상된 입력 값이 한정되어 있을 때
 print("========== (Enum) ==========")
+
+// 열거형의 선언
+enum School {
+    case primay, elementary, middle, high, college, university, gradute
+}
+
+// 열거형 변수의 생성 및 값 변경
+var highestEducationLevel: School = School.university
+print(highestEducationLevel)
+highestEducationLevel = .gradute
+print(highestEducationLevel)
+
+// 열거형의 원시 값 지정과 사용
+enum WeekDays: Character, CaseIterable{
+    case mon = "월", tue = "화", wed = "수", thu = "목", fri = "금", sat = "토", sun = "일"
+}
+let today: WeekDays = WeekDays.fri
+print("오늘은 \(today  .rawValue)요일 입니다.")
+print("오늘은 \(WeekDays.wed.rawValue)요일 입니다.")
+
+// 연관 값을 갖는 열거형
+enum MainDish {
+    case pasta(taste: String)
+    case pizza(dough: String, topping: String)
+    case chicken(withSauce: Bool)
+    case rice
+}
+
+var dinner: MainDish = MainDish.pasta(taste: "크림")
+dinner = .pizza(dough: "치즈크러스트", topping: "불고기")
+print(dinner)
+dinner = .chicken(withSauce: true)
+print(dinner)
+dinner = .rice
+print(dinner)
+
+//항목 순회 (원시 값을 갖는 열거형이면 열거형 뒤에 CaseIterable 프로토콜을 채택해 주면 됩니다.)
+let allCases: [WeekDays] = WeekDays.allCases
+print(allCases)
