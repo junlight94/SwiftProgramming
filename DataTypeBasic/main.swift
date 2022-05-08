@@ -99,3 +99,13 @@ print("맨 뒤에서 한칸 앞 :: ",str[str.index(before: str.endIndex)])
 print("첫번째에서 2만큼 뒤 :: ",str[str.index(str.startIndex, offsetBy: 2)])
 print("마지막에서 2만큼 앞 :: ",str[str.index(str.endIndex, offsetBy: -2)])
 
+//MARK: - Any, AnyObject, nil
+// 타입이 Any로 지정되어 있다면 그 변수 또는 상수에 어떤 종류의 데이터 타입이든지 상관없이 할당 할 수 있다.
+// AnyObject는 Any보다 조금 한정된 의미로 클래스의 인스턴스만 할당할 수 있습니다.
+// 실제로 Any나 AnyObject는 될 수 있으면 사용하지 않는게 좋습니다.
+// nil은 특정 타입이 아니라 '없음'을 나타내는 키워드 입니다.
+print("========== (Any, AnyObject, nil) ==========")
+var someVar: Any = "junlight" // 문자열
+someVar = 50 // 정수
+someVar = 100.1 //실수
+print("Any : \(someVar)")
