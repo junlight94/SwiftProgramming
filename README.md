@@ -14,7 +14,7 @@
 * [옵셔널](https://github.com/junlight94/SwiftProgramming/blob/main/Optionals/main.swift)
 
 ### 객체지향 프로그래밍과 스위프트
-* [구조체와 클래스](https://github.com/junlight94/SwiftProgramming/blob/main/Optionals/main.swift)
+* [구조체와 클래스](https://github.com/junlight94/SwiftProgramming/blob/main/StructAndClass/main.swift)
 
 ### 함수형 프로그래밍과 스위프트
 * [클로저](https://github.com/junlight94/SwiftProgramming/blob/main/Optionals/main.swift)
