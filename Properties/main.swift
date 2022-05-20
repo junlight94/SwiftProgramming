@@ -209,3 +209,134 @@ class Account {
 let myAccount: Account = Account()
 
 myAccount.credit = 1000
+
+// 상속받은 연산 프로퍼티의 프로퍼티 감시자 구현
+/*
+ 연산 프로퍼티인 dollarValue가 포함되어 있는 OverAccount 클래스를 상속받은
+ ForeignAccount 클래스에서 기존 dollarValue 프로퍼티를 재정의하여 프로퍼티 감시자를
+ 구현하는 예제입니다.
+ */
+print("\n상속받은 연산 프로퍼티의 프로퍼티 감시자 구현")
+class OverAccount {
+    var credit: Int = 0{
+        willSet {
+            print("잔액이\(credit)원에서 \(newValue)원으로 변경될 예정입니다.")
+        }
+        didSet {
+            print("잔액이\(oldValue)원에서 \(credit)원으로 변경되었습니다..")
+        }
+    }
+    var dollarValue: Double {
+        get{
+            return Double(credit) / 1000.0
+        }
+        set{
+            credit = Int(newValue * 1000)
+            print("잔액을 \(newValue)달러로 변경 중입니다.")
+        }
+    }
+}
+
+class ForeignAccount: OverAccount {
+    override var dollarValue: Double {
+        willSet{
+            print("잔액이 \(dollarValue)달러에서 \(newValue)달러로 변경될 예정입니다.")
+        }
+        didSet{
+            print("잔액이 \(oldValue)달러에서 \(dollarValue)달러로 변경 되었습니다.")
+        }
+    }
+}
+
+let overAccount: ForeignAccount = ForeignAccount()
+overAccount.credit = 1000
+overAccount.dollarValue = 2
+
+//MARK: 프로퍼티(전역변수, 지역변수)
+/*
+ 연산 프로퍼티와 프로퍼티 감시자는 전역변수와 지역변수 모두에 사용할 수 있습니다.
+ */
+print("\n프로퍼티 전역변수")
+var wonInPoket: Int = 2000{
+    willSet{
+        print("주머니에 돈이 \(wonInPoket)원에서 \(newValue)원으로 변경될 예정입니다.")
+    }
+    didSet{
+        print("주머니에 돈이 \(oldValue)원에서 \(wonInPoket)으로 변경되었습니다.")
+    }
+}
+var dollarInPoket: Double{
+    get{
+        return Double(wonInPoket) / 1000.0
+    }
+    set {
+        wonInPoket = Int(newValue * 1000)
+        print("주머니의 달러를\(newValue)달러로 변경 중입니다.")
+    }
+}
+dollarInPoket = 3.5
+
+//MARK: - 타입 프로퍼티
+/*
+ 각각의 인스턴스가 아닌 타입 자체에 속하는 프로퍼티를 타입프로퍼티라고 합니다.
+ 인스터스의 생성 여부와 상관없이 타입 프로퍼티의 값은 하나며, 그 타입의 모든 인스턴스가 공통으로 사용하는 값,
+ 모든 인스턴스에서 공용으로 접근하고 값을 변경할 수 있는 변수 등을 정의할 때 유용합니다.
+ */
+
+class AClass{
+    // 저장 타입 프로퍼티
+    static var typeProperty: Int = 0
+    
+    // 저장 인스턴스 프로퍼티
+    var instanceProperty: Int = 0{
+        didSet{
+            // Self.typeProperty는
+            // AClass.typePropery와 같은 표현입니다.
+            Self.typeProperty = instanceProperty + 100
+        }
+    }
+    // 연산 타입 프로퍼티
+    static var typeComputedProperty: Int {
+        get{
+            return typeProperty
+        }
+        set {
+            typeProperty = newValue
+        }
+    }
+}
+
+AClass.typeProperty = 123
+
+let classInstance: AClass = AClass()
+classInstance.instanceProperty = 100
+
+print(AClass.typeProperty)
+print(AClass.typeComputedProperty)
+
+//MARK: - 키 경로 (Key Path)
+/*
+ 키 경로는 값을 바로 꺼내오는 것이 아니라 어떤 프로퍼티의 위치만 참조하도록 할 수 있습니다.
+ 키 경로를 사용하여 간접적으로 특정 타입의 어떤 프로퍼티 값을 가리켜야 할지 미리 지정해두고 사용할 수 있습니다.
+ 키 경로의 타입은 AnyKeyPath라는 클래스로부터 파생됩니다.
+ 제일 많이 확장된 키경로 타입은
+ WritableKeyPath<Root, Value> : 값 타입에 키 경로 타입으로 읽고 쓸 수 있는 경우에 적용
+ ReferenceWritableKeyParh<Root, Value> : 참조 타입, 즉 클래스 타입에 키 경로 타입으로 읽고 쓸 수 있는 경우에 적용
+ \타입이름.경로.경로.경로
+ = 여기서 경로는 프로퍼티 이름이라고 생각하면 됩니다.
+ */
+
+//MARK: 키 경로 타입의 타입 확인
+class KeyPerson {
+    var name: String
+    
+    init(name: String){
+        self.name = name
+    }
+}
+struct Stuff {
+    var name: String
+    var owner: KeyPerson
+}
+print(type(of: \KeyPerson.name)) // ReferenceWritableKeyPath<KeyPerson, String>
+print(type(of: \Stuff.name)) // WritableKeyPath<Stuff, String>
