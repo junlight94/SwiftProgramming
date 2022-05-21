@@ -115,3 +115,84 @@ class SelfLevel {
         self.level = level
     }
 }
+
+//MARK: 타입 메서드
+/*
+ 메서드에는 인스턴스 메서드와 타입 메서드가 있습니다.
+ 타입 자체에 호출이 가능한 메서드를 타입 메서드라고 부릅니다.
+ 메서드 앞에 static 키워드를 사용하여 타입 메서드임을 나타내줍니다.
+ 클래스 타입 메서드는 static 키워드와 class 키워드를 사용할 수 있는데
+ static으로 정의하면 상속 후 메서드 재정의가 불가능하고
+ class로 정의하면 상속 후 메서드 재정의가 가능합니다.
+ */
+
+class AClass {
+    static func staticTypeMethod() {
+        print("AClass staticTypeMethod")
+    }
+    class func classTypeMethod() {
+        print("AClass classTypeMethod")
+    }
+}
+
+class BClass: AClass{
+    /*
+     // 오류 발생, 재정의 불가
+     override static func statiTypeMethod(){
+     }
+     */
+    override class func classTypeMethod() {
+        print("BClass classTypeMethod")
+    }
+}
+
+AClass.staticTypeMethod()
+AClass.classTypeMethod()
+BClass.classTypeMethod()
+
+//MARK: 타입 프로퍼티와 타입 메서드의 사용
+/*
+ 타입 메서드는 인스턴스 메서드와는 달리 self 프로퍼티가 타입 그 자체를 가리킨다는 점이 다릅니다.
+ 인스턴스 메서드에는 self가 인스턴스를 가리킨다면 타입 메서드의 self는 타입을 가리킵니다.
+ 그래서 타입 메서드 내부에서 타입 이름과 self는 같은 뜻이라고 볼 수 있습니다.
+ 그래서 타입 메서드에서 self 프로퍼티를 사용하면 타입 프로퍼티 및 타입 메서드를 호출할 수 있습니다.
+ */
+
+// 시스템 음량은 한 기기에서 유일한 값이어야 합니다.
+struct SystemVolume {
+    // 타입 프로퍼티를 사용하면 언제나 유일한 값이 됩니다.
+    static var volume: Int = 5
+    
+    // 타입 프로퍼티를 제어하기 위해 메서드를 사용합니다.
+    static func mute() {
+        self.volume = 0 // SystemVolume.volume = 0 과 같은 표현입니다.
+    }
+}
+
+// 내비게이션 역할은 여러 인스턴스가 수행할 수 있습니다.
+class Navigation {
+    
+    // 내비게이션 인스턴스마다 음량을 따로 설정할 수 있습니다.
+    var volume: Int = 5
+    
+    // 길 안내 음성 재생
+    func guideWay() {
+        SystemVolume.mute()
+    }
+    
+    // 길 안내 음성 종료
+    func finishGuideWay() {
+        // 기존 재생원 음량 복구
+        SystemVolume.volume = self.volume
+    }
+}
+
+SystemVolume.volume = 10
+
+let myNavi: Navigation = Navigation()
+
+myNavi.guideWay()
+print(SystemVolume.volume) // 0
+
+myNavi.finishGuideWay()
+print(SystemVolume.volume) // 5
